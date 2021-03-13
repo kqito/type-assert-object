@@ -11,8 +11,8 @@
     "test": "jest",
     "type": "tsc --noEmit",
     "format": "npm-run-all -s format:*",
-    "format:fix": "prettier --write './src/**/*.{ts,tsx,js,jsx,json}'",
-    "format:lint": "eslint ./src --ext .ts,.tsx",
+    "format:fix": "prettier --write './src/**/*.{ts,js,jsx,json}'",
+    "format:lint": "eslint ./src --ext .ts",
     "clean": "rimraf ./dist",
     "release": "np",
     "prepublishOnly": "npm run build"
@@ -68,17 +68,15 @@
     "typescript": "^4.2.3"
   },
   "lint-staged": {
-    "*.{ts,tsx,js,jsx,json}": [
+    "*.{ts,js,jsx,json}": [
       "prettier --write",
-      "jest",
       "git add"
     ]
   },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
-      "pre-push": "yarn test",
-      "...": "..."
+      "pre-push": "yarn test"
     }
   },
   "dependencies": {}
