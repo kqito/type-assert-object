@@ -1,6 +1,7 @@
 import { entries } from './entries';
+import { fromEntries } from './fromEntries';
 
-describe('entries', () => {
+describe('fromEntries', () => {
   type Users = typeof users;
   const users = {
     user1: { name: 'testName1', age: 20, data: {} },
@@ -8,22 +9,14 @@ describe('entries', () => {
     user3: { name: 'testName3', age: 20, data: {} },
     0: { name: 'testName4', age: 20, data: {} },
   } as const;
+  const usersArray = entries(users);
 
   test('Should be same each value', () => {
-    expect(entries(users)).toEqual(Object.entries(users));
+    expect(fromEntries(usersArray)).toEqual(Object.fromEntries(usersArray));
   });
 
   test('Should be the type is mapped', () => {
-    const setUserId = (userId: keyof Users) => {
-      expect(userId).toBeTruthy();
-    };
-    const setUserInfo = (userInfo: Users[keyof Users]) => {
-      expect(userInfo).toBeTruthy();
-    };
-
-    entries(users).forEach(([id, user]) => {
-      setUserId(id);
-      setUserInfo(user);
-    });
+    const usersObj = fromEntries(usersArray);
+    expect<Users>(usersObj).toEqual(users);
   });
 });
