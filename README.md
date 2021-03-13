@@ -9,6 +9,7 @@
 ## Features
 - Static methods of `Object` to generate mapped type
   - e.g. `entries`, `fromEntries` and `keys`
+- No dependencies
 - Simple design
 - Light weight
 
@@ -61,7 +62,7 @@ const animalsKey = keys(animals);
 // => "dog" | "cat" | "chick"
 ```
 
-**Static method of `Object`**
+**Normal static method of `Object`**
 ```typescript
 import { entries, fromEntries, keys } from './index';
 
