@@ -14,16 +14,9 @@ describe('entries', () => {
   });
 
   test('Should be the type is mapped', () => {
-    const setUserId = (userId: keyof Users) => {
-      expect(userId).toBeTruthy();
-    };
-    const setUserInfo = (userInfo: Users[keyof Users]) => {
-      expect(userInfo).toBeTruthy();
-    };
-
     entries(users).forEach(([id, user]) => {
-      setUserId(id);
-      setUserInfo(user);
+      expect<keyof Users>(id);
+      expect<Users[keyof Users]>(user);
     });
   });
 });

@@ -19,15 +19,15 @@ export default {
   ],
   plugins: [
     resolve({
-      extensions: ['.mjs', '.js', '.json', '.node', '.ts', '.tsx'],
+      extensions: ['.mjs', '.js', '.json', '.node', '.ts'],
     }),
     typescript({
       tsconfigOverride: {
-        exclude: ['src/**/*.test.ts', 'src/**/*.test.tsx'],
+        exclude: ['src/**/*.test.ts'],
       },
     }),
     babel({
-      extensions: ['.js', '.jsx', '.es6', '.es', '.mjs', 'ts', 'tsx'],
+      extensions: ['.js', '.jsx', '.es6', '.es', '.mjs', 'ts'],
       babelHelpers: 'bundled',
       presets,
       exclude: 'node_modules/**',
